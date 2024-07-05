@@ -5,10 +5,23 @@
 	"name": "Hellay's Xp Containers",
 	"description": "Adds a way to store your xp :D",
 	"authors": [
-		"Hellay!"
+		"Hellay"
+	],
+	"contributors": [
+		"It'sBeck_"
 	],
 	"contact": {
-		"sources": "https://github.com/Hellay1218/Hellays_Xp_Containers1.21-v1.1.0"
+		"The Arsonist's Workshop Discord": "https://discord.gg/WkUHHwskfQ",
+		"Hellay Designs Discord": "https://discord.gg/fmS6pf2EZN",
+		"Source": "https://github.com/Hellay1218/Hellays_Xp_Containers1.21-v1.1.0"
+
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.modrinth": "https://modrinth.com/mod/hellays-xp-containers"
+			}
+		}
 	},
 	"license": "MIT",
 	"icon": "assets/hellays_xp_containers/icon.png",

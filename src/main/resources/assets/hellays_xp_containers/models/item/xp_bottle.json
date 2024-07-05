@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "hellays_xp_containers:item/empty_xp_bottle"
+  },
+  "overrides": [
+    {"model": "hellays_xp_containers:item/full_xp_bottle", "predicate": {"filled": 1}}]
+}

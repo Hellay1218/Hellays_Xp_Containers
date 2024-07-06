@@ -1,6 +1,0 @@
-{
-	"parent": "minecraft:item/generated",
-	"textures": {
-		"layer0": "hellays_xp_containers:item/xp_container_template"
-	}
-}

@@ -20,23 +20,23 @@ public class HellayRecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(RecipeExporter exporter) {
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC , HellayItemRegisterer.XP_CONTAINER_TEMPLATE , 2)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC , HellayItemRegisterer.XP_SCROLL, 2)
                 .pattern("#X#")
                 .pattern("#%#")
                 .pattern("###")
                 .input('#', Items.DIAMOND)
                 .input('%', Items.TINTED_GLASS)
-                .input('X', HellayItemRegisterer.XP_CONTAINER_TEMPLATE)
-                .criterion(hasItem(HellayItemRegisterer.XP_CONTAINER_TEMPLATE),conditionsFromItem(HellayItemRegisterer.XP_CONTAINER_TEMPLATE))
-                .offerTo(exporter , Identifier.of(getRecipeName(HellayItemRegisterer.XP_CONTAINER_TEMPLATE)));
+                .input('X', HellayItemRegisterer.XP_SCROLL)
+                .criterion(hasItem(HellayItemRegisterer.XP_SCROLL),conditionsFromItem(HellayItemRegisterer.XP_SCROLL))
+                .offerTo(exporter , Identifier.of(getRecipeName(HellayItemRegisterer.XP_SCROLL)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC , HellayItemRegisterer.XP_BOTTLE)
                 .pattern("%X%")
                 .pattern(" # ")
                 .input('#', Items.NETHERITE_INGOT)
                 .input('%', Items.TINTED_GLASS)
-                .input('X', HellayItemRegisterer.XP_CONTAINER_TEMPLATE)
-                .criterion(hasItem(HellayItemRegisterer.XP_CONTAINER_TEMPLATE),conditionsFromItem(HellayItemRegisterer.XP_CONTAINER_TEMPLATE))
+                .input('X', HellayItemRegisterer.XP_SCROLL)
+                .criterion(hasItem(HellayItemRegisterer.XP_SCROLL),conditionsFromItem(HellayItemRegisterer.XP_SCROLL))
                 .offerTo(exporter , Identifier.of(getRecipeName(HellayItemRegisterer.XP_BOTTLE)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC , HellayItemRegisterer.XP_JAR)
@@ -45,8 +45,8 @@ public class HellayRecipeProvider extends FabricRecipeProvider {
                 .pattern("###")
                 .input('#', Items.NETHERITE_INGOT)
                 .input('%', Items.TINTED_GLASS)
-                .input('X', HellayItemRegisterer.XP_CONTAINER_TEMPLATE)
-                .criterion(hasItem(HellayItemRegisterer.XP_CONTAINER_TEMPLATE),conditionsFromItem(HellayItemRegisterer.XP_CONTAINER_TEMPLATE))
+                .input('X', HellayItemRegisterer.XP_SCROLL)
+                .criterion(hasItem(HellayItemRegisterer.XP_SCROLL),conditionsFromItem(HellayItemRegisterer.XP_SCROLL))
                 .offerTo(exporter , Identifier.of(getRecipeName(HellayItemRegisterer.XP_JAR)));
     }
 }

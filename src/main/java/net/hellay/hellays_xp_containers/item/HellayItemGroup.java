@@ -10,11 +10,12 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class HellayItemGroup {
-    public static final ItemGroup HEllAYS_XP_CONTAINERS_GROUP = Registry.register(Registries.ITEM_GROUP,
+    public static final ItemGroup HELLAYS_XP_CONTAINERS_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(HellaysXpContainersMain.MOD_ID , "xp_container_group") ,
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.hellays_xp_containers.xp_container_group")).icon(() -> new ItemStack(HellayItemRegisterer.XP_BOTTLE)).entries((displayContext, entries) -> {
 
                 entries.add(HellayItemRegisterer.XP_BOTTLE);
+                entries.add(HellayItemRegisterer.XP_SCROLL);
                 entries.add(HellayItemRegisterer.XP_JAR);
 
             }).build());

@@ -7,11 +7,11 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_xp_container_template": {
+    "has_xp_scroll": {
       "conditions": {
         "items": [
           {
-            "items": "hellays_xp_containers:xp_container_template"
+            "items": "hellays_xp_containers:xp_scroll"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_xp_container_template"
+      "has_xp_scroll"
     ]
   ],
   "rewards": {

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:diamond"
+    },
+    "%": {
+      "item": "minecraft:tinted_glass"
+    },
+    "X": {
+      "item": "hellays_xp_containers:xp_container_template"
+    }
+  },
+  "pattern": [
+    "#X#",
+    "#%#",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "id": "hellays_xp_containers:xp_container_template"
+  }
+}

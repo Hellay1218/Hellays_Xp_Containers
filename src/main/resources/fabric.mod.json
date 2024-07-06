@@ -11,15 +11,14 @@
 		"It'sBeck_"
 	],
 	"contact": {
-		"The Arsonist's Workshop Discord": "https://discord.gg/WkUHHwskfQ",
-		"Hellay Designs Discord": "https://discord.gg/fmS6pf2EZN",
-		"Source": "https://github.com/Hellay1218/Hellays_Xp_Containers1.21-v1.1.0"
+		"homepage": "https://modrinth.com/mod/hellays-xp-containers",
+		"sources": "https://github.com/Hellay1218/Hellays_Xp_Containers1.21-v1.1.0"
 
 	},
 	"custom": {
 		"modmenu": {
 			"links": {
-				"modmenu.modrinth": "https://modrinth.com/mod/hellays-xp-containers"
+				"modmenu.discord": "https://discord.gg/fmS6pf2EZN"
 			}
 		}
 	},

@@ -95,9 +95,7 @@ public class XpContainerItem extends Item {
     }
 
     public static void SetContainedXp(ItemStack stack , int xp){
-        stack.apply(DataComponentTypes.CUSTOM_DATA, NbtComponent.DEFAULT, comp -> comp.apply(currentNbt -> {
-            currentNbt.putInt("xp", xp);
-        }));
+        stack.apply(DataComponentTypes.CUSTOM_DATA, NbtComponent.DEFAULT, comp -> comp.apply(currentNbt -> currentNbt.putInt("xp", xp)));
     }
 
     public static int GetContainedXp(ItemStack stack){
@@ -110,9 +108,7 @@ public class XpContainerItem extends Item {
     }
 
     public static void RemoveContainedXp(ItemStack stack){
-        stack.apply(DataComponentTypes.CUSTOM_DATA, NbtComponent.DEFAULT, comp -> comp.apply(currentNbt -> {
-            currentNbt.putInt("xp", 0);
-        }));
+        stack.apply(DataComponentTypes.CUSTOM_DATA, NbtComponent.DEFAULT, comp -> comp.apply(currentNbt -> currentNbt.putInt("xp", 0)));
     }
 
 }

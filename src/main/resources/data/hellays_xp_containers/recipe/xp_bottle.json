@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "%": {
+      "item": "minecraft:tinted_glass"
+    },
+    "X": {
+      "item": "hellays_xp_containers:xp_container_template"
+    }
+  },
+  "pattern": [
+    "%X%",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "hellays_xp_containers:xp_bottle"
+  }
+}

@@ -26,7 +26,7 @@ public class XpContainerItem extends Item {
 
 
     public XpContainerItem(Settings settings , int max_xp) {
-        super(settings.maxCount(1).rarity(Rarity.EPIC).fireproof());
+        super(settings.maxCount(1).rarity(Rarity.RARE).fireproof());
         max_xp_level = max_xp;
     }
 

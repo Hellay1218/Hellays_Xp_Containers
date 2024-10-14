@@ -1,7 +1,6 @@
 package net.hellay.hellays_xp_containers;
 
 import net.fabricmc.api.ModInitializer;
-
 import net.hellay.hellays_xp_containers.item.HellayItemGroup;
 import net.hellay.hellays_xp_containers.item.HellayItemRegisterer;
 import org.slf4j.Logger;

@@ -7,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -33,35 +34,31 @@ public class XpContainerItem extends Item {
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 		ItemStack stack = user.getStackInHand(hand);
 
-		if (user.experienceLevel != 0 && getContainedXp(stack) == 0) {
-			for (int i = 0; i <= 60; i++) {
-				float haX = Random.create().nextFloat() * (Random.create().nextBoolean() ? -0.75f : 0.75f);
-				float haZ = Random.create().nextFloat() * (Random.create().nextBoolean() ? -0.75f : 0.75f);
-				world.addParticle(ParticleTypes.COMPOSTER, user.getX() + haX, user.getY() + (i / 30d), user.getZ() + haZ, 0.01, 100, 100);
-			}
+		if (user.experienceLevel != 0 && getContainedXp(stack) <= 0) {
+			createParticles(world, user);
 			world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.NEUTRAL, 1, 1);
-			if (user.experienceLevel <= max_xp_level) {
-				setContainedXp(stack, user.experienceLevel);
-				user.experienceLevel = 0;
-			} else {
-				setContainedXp(stack, max_xp_level);
-				user.experienceLevel -= this.max_xp_level;
-			}
+
+			setContainedXp(stack, Math.min(user.experienceLevel, max_xp_level));
+			user.experienceLevel -= getContainedXp(stack);
 
 			user.getItemCooldownManager().set(this, 15);
-		} else if (getContainedXp(stack) != 0) {
-			for (int i = 0; i <= 60; i++) {
-				float haX = Random.create().nextFloat() * (Random.create().nextBoolean() ? -0.75f : 0.75f);
-				float haZ = Random.create().nextFloat() * (Random.create().nextBoolean() ? -0.75f : 0.75f);
-				world.addParticle(ParticleTypes.COMPOSTER, user.getX() + haX, user.getY() + (i / 30d), user.getZ() + haZ, 0.01, 100, 100);
-			}
-
+		} else if (getContainedXp(stack) >= 0) {
+			createParticles(world, user);
 			world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.BLOCK_NOTE_BLOCK_BASS.value(), SoundCategory.NEUTRAL, 1, 1);
 			world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.NEUTRAL, 1, 1);
+
 			user.experienceLevel += getContainedXp(stack);
 			removeContainedXp(stack);
 		}
 		return TypedActionResult.pass(user.getStackInHand(hand));
+	}
+
+	private void createParticles(World world, PlayerEntity user) {
+        for (int i = 0; i <= 60; i++) {
+			float haX = user.getRandom().nextFloat() * (user.getRandom().nextBoolean() ? -0.75f : 0.75f);
+			float haZ = user.getRandom().nextFloat() * (user.getRandom().nextBoolean() ? -0.75f : 0.75f);
+			world.addParticle(ParticleTypes.COMPOSTER, user.getX() + haX, user.getY() + (i / 30d), user.getZ() + haZ, 0.01, 100, 100);
+		}
 	}
 
 	@Override
@@ -71,7 +68,7 @@ public class XpContainerItem extends Item {
 
 	@Override
 	public boolean hasGlint(ItemStack stack) {
-		return getContainedXp(stack) != 0;
+		return getContainedXp(stack) > 0;
 	}
 
 	@Override
@@ -88,7 +85,9 @@ public class XpContainerItem extends Item {
 	}
 
 	public static float isFilled(ItemStack stack) {
-		return stack.hasGlint() ? 1f : 0f;
+		if (stack.getItem() instanceof XpContainerItem)
+			return getContainedXp(stack) > 0 ? 1f : 0f;
+		return 0f;
 	}
 
 	public static void setContainedXp(ItemStack stack, int xp) {
@@ -96,12 +95,11 @@ public class XpContainerItem extends Item {
 	}
 
 	public static int getContainedXp(ItemStack stack) {
-		if (stack.get(DataComponentTypes.CUSTOM_DATA) != null) {
-			if (stack.get(DataComponentTypes.CUSTOM_DATA).copyNbt().contains("xp")) {
-				return stack.get((DataComponentTypes.CUSTOM_DATA)).copyNbt().getInt("xp");
-			}
-		}
-		return 0;
+		if (stack.get(DataComponentTypes.CUSTOM_DATA) == null)
+			return 0;
+
+		NbtCompound nbtData = stack.get(DataComponentTypes.CUSTOM_DATA).copyNbt();
+		return nbtData.contains("xp") ? nbtData.getInt("xp") : 0;
 	}
 
 	public static void removeContainedXp(ItemStack stack) {

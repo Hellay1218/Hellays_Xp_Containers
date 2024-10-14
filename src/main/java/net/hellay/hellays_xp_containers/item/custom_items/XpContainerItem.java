@@ -58,7 +58,7 @@ public class XpContainerItem extends Item {
                 float haZ = Random.create().nextFloat() * (Random.create().nextBoolean() ? -0.75f : 0.75f);
                 world.addParticle(ParticleTypes.COMPOSTER, user.getX() + haX, user.getY() + (i / 30d), user.getZ() + haZ, 0.01, 100, 100);
             }
-            
+
             world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.BLOCK_NOTE_BLOCK_BASS.value(), SoundCategory.NEUTRAL, 1, 1);
             world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.NEUTRAL, 1, 1);
             user.experienceLevel += GetContainedXp(stack);
@@ -90,7 +90,7 @@ public class XpContainerItem extends Item {
         return false;
     }
 
-    public static float IsFull(ItemStack stack){
+    public static float IsFilled(ItemStack stack){
         return stack.hasGlint() ? 1f : 0f;
     }
 

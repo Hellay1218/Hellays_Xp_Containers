@@ -12,7 +12,7 @@ public class HellayItemRegisterer {
     private static final String MOD_ID = HellaysXpContainersMain.MOD_ID;
 
     public static final Item XP_SCROLL = registerItem("xp_scroll" , new Item(new Item.Settings().rarity(Rarity.RARE)));
-    public static final Item XP_BOTTLE = registerItem("xp_bottle" , new XpContainerItem(new Item.Settings()  , 16));
+    public static final Item XP_BOTTLE = registerItem("xp_bottle" , new XpContainerItem(new Item.Settings() , 16));
     public static final Item XP_JAR = registerItem("xp_jar" , new XpContainerItem(new Item.Settings() , 64));
 
     private static Item registerItem(String name ,Item item){

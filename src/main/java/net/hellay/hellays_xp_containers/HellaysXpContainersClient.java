@@ -7,6 +7,6 @@ public class HellaysXpContainersClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		HellayModelPredicateProvider.rgisterModels();
+		HellayModelPredicateProvider.registerModels();
 	}
 }

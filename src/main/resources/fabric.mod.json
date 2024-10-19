@@ -8,12 +8,12 @@
 		"Hellay"
 	],
 	"contributors": [
-		"It'sBeck_"
+		"It'sBeck_",
+		"MosquitoCoding"
 	],
 	"contact": {
 		"homepage": "https://modrinth.com/mod/hellays-xp-containers",
-		"sources": "https://github.com/Hellay1218/Hellays_Xp_Containers1.21-v1.1.0"
-
+		"sources": "https://github.com/Hellay1218/Hellays_Xp_Containers"
 	},
 	"custom": {
 		"modmenu": {

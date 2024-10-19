@@ -15,6 +15,6 @@ public class HellaysXpContainersMain implements ModInitializer {
 	public void onInitialize() {
 		HellayItemRegisterer.registerFarmingExtensionsItems();
 		HellayItemGroup.registerModItemGroups();
-		LOGGER.info("Hello fabric From hellay's xp containers!");
+		LOGGER.info("Hello fabric from Hellay's Xp Containers!");
 	}
 }

@@ -7,9 +7,7 @@ import net.hellay.hellays_xp_containers.datagen.HellayRecipeProvider;
 public class HellaysXpContainersDataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
-		FabricDataGenerator.Pack pack= fabricDataGenerator.createPack();
-
+		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 		pack.addProvider(HellayRecipeProvider::new);
-
 	}
 }

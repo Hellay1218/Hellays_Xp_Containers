@@ -7,11 +7,12 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
 public class HellayModelPredicateProvider {
-    public static void rgisterModels(){
-        registerXpContainer(HellayItemRegisterer.XP_BOTTLE);
-        registerXpContainer(HellayItemRegisterer.XP_JAR);
-    }
-    private static void registerXpContainer(Item item){
-        ModelPredicateProviderRegistry.register(item,Identifier.of("filled"),((stack, world, entity, seed) -> XpContainerItem.IsFull(stack)));
-    }
+	public static void registerModels() {
+		registerXpContainer(HellayItemRegisterer.XP_BOTTLE);
+		registerXpContainer(HellayItemRegisterer.XP_JAR);
+	}
+
+	private static void registerXpContainer(Item item) {
+		ModelPredicateProviderRegistry.register(item, Identifier.of("filled"), ((stack, world, entity, seed) -> XpContainerItem.isFilled(stack)));
+	}
 }

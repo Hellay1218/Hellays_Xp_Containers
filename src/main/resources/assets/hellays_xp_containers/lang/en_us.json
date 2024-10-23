@@ -6,5 +6,7 @@
   "item.hellays_xp_containers.xp_scroll": "Xp Scroll",
 
   "itemtooltip.hellays_xp_containers.xp_container.part1": "Contains %s/%s Experience Levels %s",
-  "itemtooltip.hellays_xp_containers.xp_container.part2": "(Full)"
+  "itemtooltip.hellays_xp_containers.xp_container.part2": "(Full)",
+
+  "enchantment.hellays_xp_containers.voluminous": "Voluminous"
 }

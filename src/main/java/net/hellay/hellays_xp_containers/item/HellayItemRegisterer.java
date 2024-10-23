@@ -9,9 +9,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
-public class HellayItemRegisterer {
-	private static final String MOD_ID = HellaysXpContainersMain.MOD_ID;
+import static net.hellay.hellays_xp_containers.HellaysXpContainersMain.MOD_ID;
 
+public class HellayItemRegisterer {
 	public static final Item XP_SCROLL = registerItem("xp_scroll", new Item(new Item.Settings().rarity(Rarity.RARE)));
 	public static final Item XP_BOTTLE = registerItem("xp_bottle", new XpContainerItem(new Item.Settings(), XpState.levelToPoints(16)));
 	public static final Item XP_JAR = registerItem("xp_jar", new XpContainerItem(new Item.Settings(), XpState.levelToPoints(64)));

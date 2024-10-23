@@ -6,5 +6,7 @@
   "item.hellays_xp_containers.xp_scroll": "Xp Schriftrolle",
 
   "itemtooltip.hellays_xp_containers.xp_container.part1": "Enthält %s/%s Erfahrungslevel %s",
-  "itemtooltip.hellays_xp_containers.xp_container.part2": "(Voll)"
+  "itemtooltip.hellays_xp_containers.xp_container.part2": "(Voll)",
+
+  "enchantment.hellays_xp_containers.voluminous": "Voluminös"
 }

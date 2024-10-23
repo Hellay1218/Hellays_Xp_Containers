@@ -1,6 +1,8 @@
 package net.hellay.hellays_xp_containers;
 
 import net.fabricmc.api.ModInitializer;
+import net.hellay.hellays_xp_containers.enchantments.HellayEnchantmentEffectComponentTypes;
+import net.hellay.hellays_xp_containers.enchantments.HellayEnchantments;
 import net.hellay.hellays_xp_containers.item.HellayItemGroup;
 import net.hellay.hellays_xp_containers.item.HellayItemRegisterer;
 import org.slf4j.Logger;
@@ -15,6 +17,8 @@ public class HellaysXpContainersMain implements ModInitializer {
 	public void onInitialize() {
 		HellayItemRegisterer.registerFarmingExtensionsItems();
 		HellayItemGroup.registerModItemGroups();
+		HellayEnchantmentEffectComponentTypes.init();
+		HellayEnchantments.init();
 		LOGGER.info("Hello fabric from Hellay's Xp Containers!");
 	}
 }

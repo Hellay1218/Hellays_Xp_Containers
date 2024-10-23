@@ -53,11 +53,12 @@ public class XpState {
 		}
 	}
 
-	public static int levelToPoints(int level) {
+	public static int levelToPoints(float level) {
 		XpState state = new XpState();
-		for (int i = 0; i < level; i++) {
+		for (int i = 0; i < (int) level; i++) {
 			state.addExperience(getNextLevelExperience(i));
 		}
+		state.experienceProgress = level - (int) level;
 		return state.totalExperience;
 	}
 

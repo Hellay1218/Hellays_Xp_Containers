@@ -1,8 +1,10 @@
 package net.hellay.hellays_xp_containers.item.custom_items;
 
+import net.hellay.hellays_xp_containers.enchantments.HellayEnchantmentEffectComponentTypes;
 import net.hellay.hellays_xp_containers.util.XpState;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -28,14 +30,14 @@ public class XpContainerItem extends Item {
 	private static final SoundEvent ERROR_SOUND = SoundEvents.BLOCK_NOTE_BLOCK_BASS.value();
 	private static final SoundEvent SUCCESS_SOUND = SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP;
 
-	private final int MAX_XP_POINTS;
+	private final int INITIAL_MAX_XP_POINTS;
 
 	/**
-	 * To translate levels to points use {@link net.hellay.hellays_xp_containers.util.XpState#levelToPoints(int)}
+	 * To translate levels to points use {@link net.hellay.hellays_xp_containers.util.XpState#levelToPoints(float)}
 	 **/
 	public XpContainerItem(Settings settings, int maxXpPoints) {
 		super(settings.maxCount(1).rarity(Rarity.RARE).fireproof());
-		MAX_XP_POINTS = maxXpPoints;
+		INITIAL_MAX_XP_POINTS = maxXpPoints;
 	}
 
 	@Override
@@ -46,7 +48,7 @@ public class XpContainerItem extends Item {
 		useItem:
 		if (!user.isSneaking()) {
 			int userXp = XpState.levelAndProgressToPoints(user.experienceLevel, user.experienceProgress);
-			int newContainedXp = Math.min(oldContainedXp + userXp, MAX_XP_POINTS);
+			int newContainedXp = Math.min(oldContainedXp + userXp, getMaxXpPoints(stack));
 			int addedXp = newContainedXp - oldContainedXp;
 			if (addedXp <= 0) {
 				playSound(world, user, ERROR_SOUND);
@@ -106,11 +108,23 @@ public class XpContainerItem extends Item {
 
 			String stored_level = toolTipPart1.formatted(
 					df.format(XpState.pointsToLevelsDecimal(getContainedXp(stack))),
-					df.format(XpState.pointsToLevelsDecimal(MAX_XP_POINTS)),
-					getContainedXp(stack) == MAX_XP_POINTS ? toolTipFull : ""
+					df.format(XpState.pointsToLevelsDecimal(getMaxXpPoints(stack))),
+					getContainedXp(stack) == getMaxXpPoints(stack) ? toolTipFull : ""
 			).trim();
 			tooltip.add(Text.literal(stored_level).formatted(Formatting.GREEN));
 		}
+	}
+
+	public int getMaxXpPoints(ItemStack stack) {
+		var p = EnchantmentHelper.getEffectListAndLevel(stack, HellayEnchantmentEffectComponentTypes.VOLUMINOUS_ENCHANTMENT);
+		if (p == null)
+			return INITIAL_MAX_XP_POINTS;
+
+		var enchantmentEffect = p.getFirst();
+		var enchantmentLevel = p.getSecond();
+		var linearRatio = enchantmentEffect.amount().getValue(enchantmentLevel);
+		var initialMaxLevel = XpState.pointsToLevelsDecimal(INITIAL_MAX_XP_POINTS);
+		return XpState.levelToPoints(initialMaxLevel + initialMaxLevel / 4 * linearRatio);
 	}
 
 	@Override

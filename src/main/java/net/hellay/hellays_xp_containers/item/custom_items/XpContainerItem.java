@@ -97,10 +97,18 @@ public class XpContainerItem extends Item {
 	@Override
 	public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
 		if (stack.hasGlint()) {
-			String stored_level = "Contains %s Experience Levels%s".formatted(
-					new DecimalFormat("#.##").format(XpState.pointsToLevelsDecimal(getContainedXp(stack))),
-					getContainedXp(stack) == this.MAX_XP_POINTS ? " (Full)" : ""
-			);
+			var toolTipPart1 = Text.translatable("itemtooltip.hellays_xp_containers.xp_container.part1").getString();
+			var toolTipFull = Text.translatable("itemtooltip.hellays_xp_containers.xp_container.part2").getString();
+
+			DecimalFormat df = new DecimalFormat("#.##");
+			df.setMinimumFractionDigits(0);
+			df.setMaximumFractionDigits(2);
+
+			String stored_level = toolTipPart1.formatted(
+					df.format(XpState.pointsToLevelsDecimal(getContainedXp(stack))),
+					df.format(XpState.pointsToLevelsDecimal(MAX_XP_POINTS)),
+					getContainedXp(stack) == MAX_XP_POINTS ? toolTipFull : ""
+			).trim();
 			tooltip.add(Text.literal(stored_level).formatted(Formatting.GREEN));
 		}
 	}

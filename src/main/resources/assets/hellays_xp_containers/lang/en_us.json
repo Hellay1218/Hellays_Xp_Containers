@@ -3,5 +3,8 @@
 
   "item.hellays_xp_containers.xp_bottle": "Xp Bottle",
   "item.hellays_xp_containers.xp_jar": "Xp Jar",
-  "item.hellays_xp_containers.xp_scroll": "Xp Scroll"
+  "item.hellays_xp_containers.xp_scroll": "Xp Scroll",
+
+  "itemtooltip.hellays_xp_containers.xp_container.part1": "Contains %s/%s Experience Levels %s",
+  "itemtooltip.hellays_xp_containers.xp_container.part2": "(Full)"
 }

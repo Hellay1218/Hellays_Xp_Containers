@@ -21,6 +21,6 @@ public class HellayItemRegisterer {
 	}
 
 	public static void registerFarmingExtensionsItems() {
-		HellaysXpContainersMain.LOGGER.info("Registering Items For Hellay's Xp Containers ...");
+		HellaysXpContainersMain.LOGGER.info("Registering items for Hellay's Xp Containers ...");
 	}
 }

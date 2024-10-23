@@ -29,7 +29,7 @@ public class HellayItemGroup {
 	}
 
 	public static void registerModItemGroups() {
-		HellaysXpContainersMain.LOGGER.info("Registering Mod Items Groups for mod");
+		HellaysXpContainersMain.LOGGER.info("Registering mod items groups for mod");
 	}
 }
 

@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "net.hellay.xp_containers.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"XpContainersMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

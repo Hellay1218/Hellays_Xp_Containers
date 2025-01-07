@@ -1,0 +1,12 @@
+{
+  "itemgroup.xp_containers.xp_container_group": "Xp Containers",
+
+  "item.xp_containers.xp_bottle": "Xp Bottle",
+  "item.xp_containers.xp_jar": "Xp Jar",
+  "item.xp_containers.xp_scroll": "Xp Scroll",
+
+  "itemtooltip.xp_containers.xp_container.part1": "Contains %s/%s Experience Levels %s",
+  "itemtooltip.xp_containers.xp_container.part2": "(Full)",
+
+  "enchantment.xp_containers.voluminous": "Voluminous"
+}

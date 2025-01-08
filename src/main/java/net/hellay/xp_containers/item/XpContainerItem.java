@@ -1,9 +1,12 @@
 package net.hellay.xp_containers.item;
 
+import net.fabricmc.fabric.api.item.v1.EnchantingContext;
 import net.hellay.xp_containers.enchantments.EnchantmentEffectComponentTypes;
+import net.hellay.xp_containers.enchantments.Enchantments;
 import net.hellay.xp_containers.util.XpState;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,14 +15,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Rarity;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 import java.text.DecimalFormat;
@@ -41,7 +45,7 @@ public class XpContainerItem extends Item {
 	}
 
 	@Override
-	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+	public ActionResult use(World world, PlayerEntity user, Hand hand) {
 		ItemStack stack = user.getStackInHand(hand);
 		final int oldContainedXp = getContainedXp(stack);
 
@@ -71,7 +75,7 @@ public class XpContainerItem extends Item {
 			createParticles(world, user);
 		}
 
-		return TypedActionResult.pass(user.getStackInHand(hand));
+		return ActionResult.PASS;
 	}
 
 	private void createParticles(World world, PlayerEntity user) {
@@ -116,7 +120,7 @@ public class XpContainerItem extends Item {
 	}
 
 	public int getMaxXpPoints(ItemStack stack) {
-		var p = EnchantmentHelper.getEffectListAndLevel(stack, EnchantmentEffectComponentTypes.VOLUMINOUS_ENCHANTMENT);
+		var p = EnchantmentHelper.getHighestLevelEffect(stack, EnchantmentEffectComponentTypes.VOLUMINOUS_ENCHANTMENT);
 		if (p == null)
 			return INITIAL_MAX_XP_POINTS;
 
@@ -128,8 +132,8 @@ public class XpContainerItem extends Item {
 	}
 
 	@Override
-	public boolean isEnchantable(ItemStack stack) {
-		return false;
+	public boolean canBeEnchantedWith(ItemStack stack, RegistryEntry<Enchantment> enchantment, EnchantingContext context) {
+		return context == EnchantingContext.ACCEPTABLE && enchantment.matchesKey(Enchantments.VOLUMINOUS_KEY);
 	}
 
 	public static float isFilled(ItemStack stack) {

@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "minecraft:diamond"
-    },
-    "%": {
-      "item": "minecraft:tinted_glass"
-    },
-    "X": {
-      "item": "xp_containers:xp_scroll"
-    }
+    "#": "minecraft:diamond",
+    "%": "minecraft:tinted_glass",
+    "X": "xp_containers:xp_scroll"
   },
   "pattern": [
     "% %",

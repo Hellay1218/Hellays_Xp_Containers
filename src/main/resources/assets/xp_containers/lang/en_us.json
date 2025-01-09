@@ -1,4 +1,14 @@
 {
+  "xp_containers.midnightconfig.title":"Xp Containers Options",
+  "xp_containers.midnightconfig.xpStateEnum":"Xp storing method: (requires restart)",
+  "xp_containers.midnightconfig.enum.XpStateEnum.LEVELS":"Levels",
+  "xp_containers.midnightconfig.enum.XpStateEnum.POINTS":"Points",
+  "xp_containers.midnightconfig.xpBottleMaxXp":"Xp Bottle max Xp amount",
+  "xp_containers.midnightconfig.xpJarMaxXp":"Xp Jar max Xp amount",
+  "xp_containers.midnightconfig.disclaimer1":"Note: Don't change this settings if you have any items from the mod with xp in them, first remove the xp and then",
+  "xp_containers.midnightconfig.disclaimer2":" change these settings(restart required)",
+  "xp_containers.midnightconfig.header" : "",
+  "xp_containers.midnightconfig.xpStateExplanation":"Changes the containers to save the xp in points or levels",
   "itemgroup.xp_containers.xp_container_group": "Xp Containers",
 
   "item.xp_containers.xp_bottle": "Xp Bottle",

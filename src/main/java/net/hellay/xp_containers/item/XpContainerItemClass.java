@@ -1,6 +1,7 @@
 package net.hellay.xp_containers.item;
 
 import net.fabricmc.fabric.api.item.v1.EnchantingContext;
+import net.hellay.xp_containers.config.XpContainersConfig;
 import net.hellay.xp_containers.enchantment.EnchantmentEffectComponentTypes;
 import net.hellay.xp_containers.index.XpContainersEnchantments;
 import net.hellay.xp_containers.util.XpState;
@@ -34,6 +35,8 @@ public class XpContainerItemClass extends Item {
 	private static final SoundEvent ERROR_SOUND = SoundEvents.BLOCK_NOTE_BLOCK_BASS.value();
 	private static final SoundEvent SUCCESS_SOUND = SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP;
 
+	private static boolean UsePoints = XpContainersConfig.xpStateEnum == XpContainersConfig.XpStateEnum.POINTS;
+
 	private final int INITIAL_MAX_XP_POINTS;
 
 	/**
@@ -41,7 +44,7 @@ public class XpContainerItemClass extends Item {
 	 **/
 	public XpContainerItemClass(Settings settings, int maxXpPoints) {
 		super(settings.maxCount(1).rarity(Rarity.RARE).fireproof());
-		INITIAL_MAX_XP_POINTS = maxXpPoints;
+		INITIAL_MAX_XP_POINTS = XpState.levelToPoints(maxXpPoints);
 	}
 
 	@Override
@@ -53,26 +56,43 @@ public class XpContainerItemClass extends Item {
 		if (!user.isSneaking()) {
 			int userXp = XpState.levelAndProgressToPoints(user.experienceLevel, user.experienceProgress);
 			int newContainedXp = Math.min(oldContainedXp + userXp, getMaxXpPoints(stack));
+			if(!UsePoints){
+				userXp = user.experienceLevel;
+				newContainedXp = Math.min(oldContainedXp + userXp, (int)XpState.pointsToLevelsDecimal(getMaxXpPoints(stack)));
+			}
 			int addedXp = newContainedXp - oldContainedXp;
+
 			if (addedXp <= 0) {
 				playSound(world, user, ERROR_SOUND);
 				break useItem;
 			}
-
-			setContainedXp(stack, newContainedXp);
-			user.addExperience(-addedXp);
 			playSound(world, user, SUCCESS_SOUND);
 			createParticles(world, user);
+			setContainedXp(stack, newContainedXp);
+			if(!UsePoints){
+				System.out.println(userXp);
+				System.out.println(oldContainedXp);
+				System.out.println(newContainedXp);
+				System.out.println(addedXp);
+				user.experienceLevel -= addedXp;
+				System.out.println(user.experienceLevel);
+				break useItem;
+			}
+			user.addExperience(-addedXp);
+
 		} else {
 			if (oldContainedXp <= 0) {
 				playSound(world, user, ERROR_SOUND);
 				break useItem;
 			}
-
-			setContainedXp(stack, 0);
-			user.addExperience(oldContainedXp);
 			playSound(world, user, SUCCESS_SOUND);
 			createParticles(world, user);
+			setContainedXp(stack, 0);
+			if(!UsePoints){
+				user.experienceLevel += oldContainedXp;
+				break useItem;
+			}
+			user.addExperience(oldContainedXp);
 		}
 
 		return ActionResult.PASS;
@@ -111,7 +131,7 @@ public class XpContainerItemClass extends Item {
 			df.setMaximumFractionDigits(2);
 
 			String stored_level = toolTipPart1.formatted(
-					df.format(XpState.pointsToLevelsDecimal(getContainedXp(stack))),
+					df.format(UsePoints ? XpState.pointsToLevelsDecimal(getContainedXp(stack)) : getContainedXp(stack)),
 					df.format(XpState.pointsToLevelsDecimal(getMaxXpPoints(stack))),
 					getContainedXp(stack) == getMaxXpPoints(stack) ? toolTipFull : ""
 			).trim();

@@ -1,8 +1,8 @@
 package net.hellay.xp_containers.item;
 
 import net.fabricmc.fabric.api.item.v1.EnchantingContext;
-import net.hellay.xp_containers.enchantments.EnchantmentEffectComponentTypes;
-import net.hellay.xp_containers.enchantments.Enchantments;
+import net.hellay.xp_containers.enchantment.EnchantmentEffectComponentTypes;
+import net.hellay.xp_containers.index.XpContainersEnchantments;
 import net.hellay.xp_containers.util.XpState;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
@@ -29,7 +29,7 @@ import net.minecraft.world.World;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class XpContainerItem extends Item {
+public class XpContainerItemClass extends Item {
 
 	private static final SoundEvent ERROR_SOUND = SoundEvents.BLOCK_NOTE_BLOCK_BASS.value();
 	private static final SoundEvent SUCCESS_SOUND = SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP;
@@ -39,7 +39,7 @@ public class XpContainerItem extends Item {
 	/**
 	 * To translate levels to points use {@link net.hellay.xp_containers.util.XpState#levelToPoints(float)}
 	 **/
-	public XpContainerItem(Settings settings, int maxXpPoints) {
+	public XpContainerItemClass(Settings settings, int maxXpPoints) {
 		super(settings.maxCount(1).rarity(Rarity.RARE).fireproof());
 		INITIAL_MAX_XP_POINTS = maxXpPoints;
 	}
@@ -133,11 +133,11 @@ public class XpContainerItem extends Item {
 
 	@Override
 	public boolean canBeEnchantedWith(ItemStack stack, RegistryEntry<Enchantment> enchantment, EnchantingContext context) {
-		return context == EnchantingContext.ACCEPTABLE && enchantment.matchesKey(Enchantments.VOLUMINOUS_KEY);
+		return context == EnchantingContext.ACCEPTABLE && enchantment.matchesKey(XpContainersEnchantments.VOLUMINOUS_KEY);
 	}
 
 	public static float isFilled(ItemStack stack) {
-		if (stack.getItem() instanceof XpContainerItem)
+		if (stack.getItem() instanceof XpContainerItemClass)
 			return getContainedXp(stack) > 0 ? 1f : 0f;
 		return 0f;
 	}

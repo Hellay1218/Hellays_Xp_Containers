@@ -1,4 +1,4 @@
-package net.hellay.xp_containers.enchantments;
+package net.hellay.xp_containers.enchantment;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

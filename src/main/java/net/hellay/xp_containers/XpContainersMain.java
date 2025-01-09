@@ -1,10 +1,10 @@
 package net.hellay.xp_containers;
 
 import net.fabricmc.api.ModInitializer;
-import net.hellay.xp_containers.enchantments.EnchantmentEffectComponentTypes;
-import net.hellay.xp_containers.enchantments.Enchantments;
-import net.hellay.xp_containers.item.ItemGroupRegisterer;
-import net.hellay.xp_containers.item.Items;
+import net.hellay.xp_containers.enchantment.EnchantmentEffectComponentTypes;
+import net.hellay.xp_containers.index.XpContainersEnchantments;
+import net.hellay.xp_containers.index.XpContainersItemGroups;
+import net.hellay.xp_containers.index.XpContainersItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,10 +17,10 @@ public class XpContainersMain implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		Items.registerFarmingExtensionsItems();
-		ItemGroupRegisterer.registerModItemGroups();
+		XpContainersItems.registerFarmingExtensionsItems();
+		XpContainersItemGroups.registerModItemGroups();
 		EnchantmentEffectComponentTypes.init();
-		Enchantments.init();
+		XpContainersEnchantments.init();
 		LOGGER.info("Hello fabric from " + MOD_NAME + "!");
 	}
 }

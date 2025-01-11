@@ -1,4 +1,4 @@
-package net.hellay.xp_containers.enchantments;
+package net.hellay.xp_containers.index;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.registry.RegistryKey;
@@ -7,7 +7,7 @@ import net.minecraft.util.Identifier;
 
 import static net.hellay.xp_containers.XpContainersMain.MOD_ID;
 
-public class Enchantments {
+public class XpContainersEnchantments {
 	public static final RegistryKey<Enchantment> VOLUMINOUS_KEY = registerEnchantment("voluminous");
 
 	private static RegistryKey<Enchantment> registerEnchantment(String name) {

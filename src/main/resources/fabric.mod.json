@@ -43,9 +43,15 @@
 		"fabricloader": ">=0.15.11",
 		"minecraft": "~1.21",
 		"java": ">=21",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"midnightlib": "*"
 	},
 	"suggests": {
 		"another-mod": "*"
-	}
+	},
+	"jars": [
+		{
+			"file": "META-INF/jars/midnightlib-fabric-1.6.4+1.21.3.jar"
+		}
+	]
 }

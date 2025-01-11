@@ -1,4 +1,4 @@
-package net.hellay.xp_containers.enchantments;
+package net.hellay.xp_containers.enchantment;
 
 import net.minecraft.component.ComponentType;
 import net.minecraft.registry.Registries;

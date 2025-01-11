@@ -13,6 +13,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
@@ -70,12 +71,7 @@ public class XpContainerItemClass extends Item {
 			createParticles(world, user);
 			setContainedXp(stack, newContainedXp);
 			if(!UsePoints){
-				System.out.println(userXp);
-				System.out.println(oldContainedXp);
-				System.out.println(newContainedXp);
-				System.out.println(addedXp);
 				user.experienceLevel -= addedXp;
-				System.out.println(user.experienceLevel);
 				break useItem;
 			}
 			user.addExperience(-addedXp);
@@ -100,10 +96,43 @@ public class XpContainerItemClass extends Item {
 
 	private void createParticles(World world, PlayerEntity user) {
 		for (int i = 0; i <= 60; i++) {
+
 			float haX = user.getRandom().nextFloat() * (user.getRandom().nextBoolean() ? -0.75f : 0.75f);
 			float haZ = user.getRandom().nextFloat() * (user.getRandom().nextBoolean() ? -0.75f : 0.75f);
 			world.addParticle(ParticleTypes.COMPOSTER, user.getX() + haX, user.getY() + (i / 30d), user.getZ() + haZ, 0.01, 100, 100);
+
+
+			//particle experiments
+
+			//float X = (float) Math.sin(i*6);
+			//float Z = (float) Math.cos(i*6);
+
+			//float Y = 0.4f;
+			//if(20 < i && i <= 40){Y = 1f;} else if (40 < i) {Y = 1.6f;}
+			//world.addParticle(i%2 == 0 ? ParticleTypes.WAX_OFF : ParticleTypes.WAX_ON,
+			//		user.getX() + X/1.4, user.getY() + Y, user.getZ() + Z/1.4, 2 *(Math.sin((i-1) * 6) - X) , 0, 2 *(Math.cos((i-1) * 6) - Z));
+
+			//float Y = 0.2f;
+			//if(20 < i && i <= 40){Y = 0.8f;} else if (40 < i) {Y = 1.4f;}
+			//world.addParticle(ParticleTypes.HAPPY_VILLAGER,
+			//		user.getX() + X/1.4, user.getY() + Y, user.getZ() + Z/1.4, 0 , 0, 0);
+
+
+			//world.addParticle(ParticleTypes.END_ROD, true , user.getX() + X/1.4, user.getY() + (i/45d) + 0.2, user.getZ() + Z/1.4, ((Math.sin((i - 360) * 6))- X)/64 , 0, ((Math.cos((i - 360) * 6))- Z)/64);
+
+			// uncomment this one for a cool effect ;D
+			//float X = (float) Math.sin(i*18);
+			//float Z = (float) Math.cos(i*18);
+			//float Y = 0.4f;
+			//if(20 < i && i <= 40){Y = 1f;} else if (40 < i) {Y = 1.4f;}
+			//world.addParticle(i%2 == 0 ? ParticleTypes.WAX_OFF : ParticleTypes.WAX_ON,
+			//		user.getX() + X/1.4, user.getY() + Y, user.getZ() + Z/1.4, 100 *(Math.sin((i-1) * 18)) , 0, 100 *(Math.cos((i-1) * 18)));
+
+			//here's another one :D
+			//world.addParticle(ParticleTypes.END_ROD, user.getX() + X/1.4, user.getY() + Y, user.getZ() + Z/1.4,
+			//		 (float) Math.sin((i-1)*18) , 0, (float) Math.cos((i-1)*18));
 		}
+		System.out.println("finish");
 	}
 
 	private void playSound(World world, PlayerEntity user, SoundEvent sound) {

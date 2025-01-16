@@ -20,8 +20,8 @@ public class XpContainersMain implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		MidnightConfig.init(MOD_ID , XpContainersConfig.class);
-		XpContainersItems.registerFarmingExtensionsItems();
-		XpContainersItemGroups.registerModItemGroups();
+		XpContainersItems.registerXpContainersItems();
+		XpContainersItemGroups.registerXpContainersItemGroups();
 		EnchantmentEffectComponentTypes.init();
 		XpContainersEnchantments.init();
 		LOGGER.info("Hello fabric from " + MOD_NAME + "!");

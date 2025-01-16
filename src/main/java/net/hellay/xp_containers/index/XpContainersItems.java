@@ -3,7 +3,6 @@ package net.hellay.xp_containers.index;
 import net.hellay.xp_containers.XpContainersMain;
 import net.hellay.xp_containers.config.XpContainersConfig;
 import net.hellay.xp_containers.item.XpContainerItemClass;
-import net.hellay.xp_containers.util.XpState;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -30,7 +29,7 @@ public class XpContainersItems {
 		return Registry.register(Registries.ITEM, key, item);
 	}
 
-	public static void registerFarmingExtensionsItems() {
+	public static void registerXpContainersItems() {
 		XpContainersMain.LOGGER.info("Registering items for" + XpContainersMain.MOD_NAME + "...");
 	}
 }

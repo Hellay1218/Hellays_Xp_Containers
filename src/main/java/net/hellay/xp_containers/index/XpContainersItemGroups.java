@@ -51,7 +51,7 @@ public class XpContainersItemGroups {
 		}).forEach((stack) -> entries.add(stack, stackVisibility));
 	}
 
-	public static void registerModItemGroups() {
+	public static void registerXpContainersItemGroups() {
 		XpContainersMain.LOGGER.info("Registering items groups for " + "Hellay's Xp Containers" + "...");
 	}
 }

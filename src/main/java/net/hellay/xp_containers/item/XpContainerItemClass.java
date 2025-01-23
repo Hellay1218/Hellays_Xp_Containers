@@ -132,7 +132,6 @@ public class XpContainerItemClass extends Item {
 			//world.addParticle(ParticleTypes.END_ROD, user.getX() + X/1.4, user.getY() + Y, user.getZ() + Z/1.4,
 			//		 (float) Math.sin((i-1)*18) , 0, (float) Math.cos((i-1)*18));
 		}
-		System.out.println("finish");
 	}
 
 	private void playSound(World world, PlayerEntity user, SoundEvent sound) {

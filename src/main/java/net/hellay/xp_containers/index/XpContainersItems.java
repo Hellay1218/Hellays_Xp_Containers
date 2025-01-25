@@ -14,18 +14,19 @@ import net.minecraft.util.Rarity;
 import static net.hellay.xp_containers.XpContainersMain.MOD_ID;
 
 public class XpContainersItems {
-	public static final Item XP_SCROLL = registerItem("xp_scroll", new Item(new Item.Settings().rarity(Rarity.RARE).registryKey(keyOfItem("xp_scroll"))));
-	public static final Item XP_BOTTLE = registerItem("xp_bottle", new XpContainerItemClass(new Item.Settings().registryKey(keyOfItem("xp_bottle")),
+	public static final RegistryKey<Item> XP_SCROLL_KEY = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MOD_ID, "xp_scroll"));
+	public static final Item XP_SCROLL = registerItem(XP_SCROLL_KEY, new Item(new Item.Settings().rarity(Rarity.RARE).registryKey(XP_SCROLL_KEY)));
+
+	public static final RegistryKey<Item> XP_BOTTLE_KEY = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MOD_ID, "xp_bottle"));
+	public static final Item XP_BOTTLE = registerItem(XP_BOTTLE_KEY, new XpContainerItemClass(new Item.Settings().registryKey(XP_BOTTLE_KEY),
 			XpContainersConfig.xpBottleMaxXp));
-	public static final Item XP_JAR = registerItem("xp_jar", new XpContainerItemClass(new Item.Settings().registryKey(keyOfItem("xp_jar")),
+
+	public static final RegistryKey<Item> XP_JAR_KEY = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MOD_ID, "xp_jar"));
+	public static final Item XP_JAR = registerItem(XP_JAR_KEY, new XpContainerItemClass(new Item.Settings().registryKey(XP_JAR_KEY),
 			XpContainersConfig.xpJarMaxXp));
 
-	private static Item registerItem(String name, Item item) {
-		return Registry.register(Registries.ITEM, keyOfItem(name), item);
-	}
-
-	private static RegistryKey<Item> keyOfItem(String name){
-		return RegistryKey.of(RegistryKeys.ITEM , Identifier.of(MOD_ID , name));
+	private static Item registerItem(RegistryKey<Item> key, Item item) {
+		return Registry.register(Registries.ITEM, key, item);
 	}
 
 	public static void registerXpContainersItems() {

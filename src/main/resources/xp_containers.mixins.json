@@ -1,7 +1,7 @@
 {
 	"required": true,
 	"package": "net.hellay.xp_containers.mixin",
-	"compatibilityLevel": "JAVA_17",
+	"compatibilityLevel": "JAVA_17 ",
 	"mixins": [
 	],
 	"injectors": {

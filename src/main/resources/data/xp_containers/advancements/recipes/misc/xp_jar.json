@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "xp_containers:xp_bottle"
+            "item": "xp_containers:xp_bottle"
           }
         ]
       },

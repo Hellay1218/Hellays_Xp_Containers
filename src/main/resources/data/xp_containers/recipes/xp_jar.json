@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "key": {
-    "#": "minecraft:diamond",
-    "%": "minecraft:tinted_glass",
-    "X": "xp_containers:xp_scroll"
-  },
   "pattern": [
-    "% %",
-    "%X%",
-    "###"
+  "% %",
+  "%X%",
+  "###"
   ],
+  "key": {
+    "#": {"item": "minecraft:diamond"},
+    "%": {"item": "minecraft:tinted_glass"},
+    "X": {"item": "xp_containers:xp_scroll"}
+  },
   "result": {
-    "count": 1,
-    "id": "xp_containers:xp_jar"
+    "item": "xp_containers:xp_jar",
+    "count": 1
   }
 }

@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "xp_containers:xp_scroll"
+            "item": "xp_containers:xp_scroll"
           }
         ]
       },

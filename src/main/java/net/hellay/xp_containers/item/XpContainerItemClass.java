@@ -53,7 +53,6 @@ public class XpContainerItemClass extends Item {
 		ItemStack stack = user.getStackInHand(hand);
 		final int oldContainedXp = getContainedXp(stack);
 
-		useItem:
 		if (!user.isSneaking()) {
 			int userXp = XpState.levelAndProgressToPoints(user.experienceLevel, user.experienceProgress);
 			int newContainedXp = Math.min(oldContainedXp + userXp, getMaxXpPoints(stack));
@@ -65,33 +64,33 @@ public class XpContainerItemClass extends Item {
 
 			if (addedXp <= 0) {
 				playSound(world, user, ERROR_SOUND);
-				break useItem;
+				return ActionResult.FAIL;
 			}
 			playSound(world, user, SUCCESS_SOUND);
 			createParticles(world, user);
 			setContainedXp(stack, newContainedXp);
 			if(!UsePoints){
 				user.experienceLevel -= addedXp;
-				break useItem;
+				return ActionResult.SUCCESS;
 			}
 			user.addExperience(-addedXp);
 
 		} else {
 			if (oldContainedXp <= 0) {
 				playSound(world, user, ERROR_SOUND);
-				break useItem;
+				return ActionResult.FAIL;
 			}
 			playSound(world, user, SUCCESS_SOUND);
 			createParticles(world, user);
 			setContainedXp(stack, 0);
 			if(!UsePoints){
 				user.experienceLevel += oldContainedXp;
-				break useItem;
+				return ActionResult.SUCCESS;
 			}
 			user.addExperience(oldContainedXp);
 		}
 
-		return ActionResult.PASS;
+		return ActionResult.FAIL;
 	}
 
 	private void createParticles(World world, PlayerEntity user) {

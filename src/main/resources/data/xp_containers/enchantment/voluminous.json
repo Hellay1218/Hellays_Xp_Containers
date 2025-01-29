@@ -1,0 +1,35 @@
+{
+  "description": {
+    "type": "translatable",
+    "translate": "enchantment.xp_containers.voluminous",
+    "fallback": "Voluminous"
+  },
+  "supported_items": [
+    "xp_containers:xp_bottle",
+    "xp_containers:xp_jar"
+  ],
+  "primary_items": [],
+  "max_level": 4,
+  "weight": 1,
+  "anvil_cost": 8,
+  "max_cost": {
+    "base": 75,
+    "per_level_above_first": 25
+  },
+  "min_cost": {
+    "base": 25,
+    "per_level_above_first": 25
+  },
+  "slots": [
+    "any"
+  ],
+  "effects": {
+    "xp_containers:voluminous": {
+      "amount": {
+        "type": "minecraft:linear",
+        "base": 1,
+        "per_level_above_first": 1
+      }
+    }
+  }
+}

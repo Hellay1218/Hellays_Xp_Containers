@@ -1,15 +1,15 @@
 {
 	"schemaVersion": 1,
-	"id": "hellays_xp_containers",
+	"id": "xp_containers",
 	"version": "${version}",
-	"name": "Hellay's Xp Containers",
+	"name": "Xp Containers",
 	"description": "Adds a way to store your xp :D",
 	"authors": [
-		"Hellay"
+		"Hellay",
+		"MosquitoCoding"
 	],
 	"contributors": [
-		"It'sBeck_",
-		"MosquitoCoding"
+		"It'sBeck_"
 	],
 	"contact": {
 		"homepage": "https://modrinth.com/mod/hellays-xp-containers",
@@ -23,21 +23,21 @@
 		}
 	},
 	"license": "MIT",
-	"icon": "assets/hellays_xp_containers/icon.png",
+	"icon": "assets/xp_containers/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.hellay.hellays_xp_containers.HellaysXpContainersMain"
+			"net.hellay.xp_containers.XpContainersMain"
 		],
 		"client": [
-			"net.hellay.hellays_xp_containers.HellaysXpContainersClient"
+			"net.hellay.xp_containers.XpContainersClient"
 		],
 		"fabric-datagen": [
-			"net.hellay.hellays_xp_containers.HellaysXpContainersDataGenerator"
+			"net.hellay.xp_containers.XpContainersDataGenerator"
 		]
 	},
 	"mixins": [
-		"hellays_xp_containers.mixins.json"
+		"xp_containers.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.11",

@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.EnchantingContext;
 import net.hellay.xp_containers.init.XpContainerEnchantmentEffectComponentTypes;
 import net.hellay.xp_containers.init.XpContainerEnchantments;
 import net.hellay.xp_containers.util.XpState;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.enchantment.Enchantment;
@@ -21,12 +22,10 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Rarity;
 import net.minecraft.world.World;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 public class XpContainerItem extends Item {
@@ -102,20 +101,29 @@ public class XpContainerItem extends Item {
 
 	@Override
 	public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+		var client = MinecraftClient.getInstance();
+		if (client.player == null)
+			return;
 		if (stack.hasGlint()) {
-			var toolTipPart1 = Text.translatable("itemtooltip.xp_containers.xp_container.part1").getString();
-			var toolTipFull = Text.translatable("itemtooltip.xp_containers.xp_container.part2").getString();
+			int containedXp = getContainedXp(stack);
+			int currentLevel = (int) XpState.pointsToLevelsDecimal(client.player.totalExperience);
+			int addedLevel = (int) XpState.pointsToLevelsDecimal(client.player.totalExperience + containedXp);
 
-			DecimalFormat df = new DecimalFormat("#.##");
-			df.setMinimumFractionDigits(0);
-			df.setMaximumFractionDigits(2);
-
-			String stored_level = toolTipPart1.formatted(
-					df.format(XpState.pointsToLevelsDecimal(getContainedXp(stack))),
-					df.format(XpState.pointsToLevelsDecimal(getMaxXpPoints(stack))),
-					getContainedXp(stack) == getMaxXpPoints(stack) ? toolTipFull : ""
-			).trim();
-			tooltip.add(Text.literal(stored_level).formatted(Formatting.GREEN));
+			tooltip.add(Text.literal("%s: %d".formatted(
+					Text.translatable("itemtooltip.xp_containers.xp_container.points").getString(),
+					containedXp
+			)));
+			tooltip.add(Text.literal("%s: %s -> %s".formatted(
+					Text.translatable("itemtooltip.xp_containers.xp_container.levels").getString(),
+					currentLevel,
+					(addedLevel > currentLevel ? "§a" : "") + addedLevel
+			)));
+			tooltip.add(Text.literal("%s: %d".formatted(
+					Text.translatable("itemtooltip.xp_containers.xp_container.points_to_next_level").getString(),
+					XpState.levelToPoints(addedLevel + 1) - (client.player.totalExperience + containedXp)
+			)));
+		} else {
+			tooltip.add(Text.translatable("itemtooltip.xp_containers.xp_container.empty"));
 		}
 	}
 

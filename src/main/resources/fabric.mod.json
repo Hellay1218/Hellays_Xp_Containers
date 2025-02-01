@@ -30,7 +30,7 @@
 			"net.hellay.xp_containers.XpContainersMain"
 		],
 		"client": [
-			"net.hellay.xp_containers.XpContainersClient"
+			"net.hellay.xp_containers.client.XpContainersClient"
 		],
 		"fabric-datagen": [
 			"net.hellay.xp_containers.XpContainersDataGenerator"

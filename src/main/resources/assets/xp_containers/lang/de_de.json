@@ -5,8 +5,10 @@
   "item.xp_containers.xp_jar": "Großer Xp Behälter",
   "item.xp_containers.xp_scroll": "Xp Schriftrolle",
 
-  "itemtooltip.xp_containers.xp_container.part1": "Enthält %s/%s Erfahrungslevel %s",
-  "itemtooltip.xp_containers.xp_container.part2": "(Voll)",
+  "itemtooltip.xp_containers.xp_container.points": "Gespeicherte XP Punkte",
+  "itemtooltip.xp_containers.xp_container.levels": "Levels",
+  "itemtooltip.xp_containers.xp_container.points_to_next_level": "Punkte bis zum nächsten Level",
+  "itemtooltip.xp_containers.xp_container.empty": "Leer",
 
   "enchantment.xp_containers.voluminous": "Voluminös"
 }

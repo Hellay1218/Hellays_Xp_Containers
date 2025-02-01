@@ -5,8 +5,10 @@
   "item.xp_containers.xp_jar": "Xp Jar",
   "item.xp_containers.xp_scroll": "Xp Scroll",
 
-  "itemtooltip.xp_containers.xp_container.part1": "Contains %s/%s Experience Levels %s",
-  "itemtooltip.xp_containers.xp_container.part2": "(Full)",
+  "itemtooltip.xp_containers.xp_container.points": "Stored xp points",
+  "itemtooltip.xp_containers.xp_container.levels": "Levels",
+  "itemtooltip.xp_containers.xp_container.points_to_next_level": "Points to next level",
+  "itemtooltip.xp_containers.xp_container.empty": "Empty",
 
   "enchantment.xp_containers.voluminous": "Voluminous"
 }

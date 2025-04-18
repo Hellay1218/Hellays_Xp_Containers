@@ -1,6 +1,8 @@
 package net.hellay.xp_containers;
 
+import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
+import net.hellay.xp_containers.config.XpContainersConfig;
 import net.hellay.xp_containers.init.XpContainerEnchantmentEffectComponentTypes;
 import net.hellay.xp_containers.init.XpContainerEnchantments;
 import net.hellay.xp_containers.init.XpContainerItemGroups;
@@ -17,6 +19,7 @@ public class XpContainersMain implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		MidnightConfig.init(MOD_ID , XpContainersConfig.class);
 		XpContainerItems.init();
 		XpContainerItemGroups.init();
 		XpContainerEnchantmentEffectComponentTypes.init();

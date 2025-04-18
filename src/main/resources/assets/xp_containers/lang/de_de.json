@@ -1,8 +1,15 @@
 {
+  "xp_containers.midnightconfig.title":"Hellays Xp Containers",
+  "xp_containers.midnightconfig.xpBottleMaxXp":"Xp Phiole max XP Punkte",
+  "xp_containers.midnightconfig.xpJarMaxXp":"Xp Flasche max XP Punkte",
+
+  "xp_containers.midnightconfig.xpBottleMaxXp.tooltip":"",
+  "xp_containers.midnightconfig.xpJarMaxXp.tooltip":"Xp Jar max xp points",
+
   "itemgroup.xp_containers.xp_container_group": "Xp Behälter",
 
-  "item.xp_containers.xp_bottle": "Xp Flasche",
-  "item.xp_containers.xp_jar": "Großer Xp Behälter",
+  "item.xp_containers.xp_bottle": "Xp Phiole",
+  "item.xp_containers.xp_jar": "Xp Flasche",
   "item.xp_containers.xp_scroll": "Xp Schriftrolle",
 
   "itemtooltip.xp_containers.xp_container.points": "Gespeicherte XP Punkte",

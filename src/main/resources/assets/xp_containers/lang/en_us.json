@@ -1,4 +1,14 @@
 {
+  "xp_containers.midnightconfig.title":"Hellays Xp Containers",
+
+  "xp_containers.midnightconfig.xpInfo1":"The following settings work with xp points instead of levels. To translate levels into xp points you can use [this website](http://www.pernsteiner.org/minecraft/levelcalc.html)",
+  "xp_containers.midnightconfig.xpInfo2":"Make sure to check out the tooltips of each setting to see some default recommendations",
+  "xp_containers.midnightconfig.xpBottleMaxXp":"Xp Bottle max xp points",
+  "xp_containers.midnightconfig.xpJarMaxXp":"Xp Jar max xp points",
+
+  "xp_containers.midnightconfig.xpBottleMaxXp.tooltip":"Recommendations:\n - Level 0 - 16: 272 xp points\n - Level 27 - 30: 168 xp points",
+  "xp_containers.midnightconfig.xpJarMaxXp.tooltip":"Xp Jar max xp points",
+
   "itemgroup.xp_containers.xp_container_group": "Xp Containers",
 
   "item.xp_containers.xp_bottle": "Xp Bottle",
